@@ -9,6 +9,7 @@ import {
   FolderCheck,
   Headphones,
   Image,
+  LucideImage,
   Play,
   UploadCloud,
   Video,
@@ -73,38 +74,37 @@ export default function ImageUpload() {
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
   const [filesToUpload, setFilesToUpload] = useState<FileUploadProgress[]>([]);
 
-
   const getFileIconAndColor = (file: File) => {
     if (file.type.includes(FileTypes.Image)) {
       return {
-        icon: <Image size={40} className={ImageColor.fillColor} />,
+        icon: <div aria-label="Image file"><LucideImage size={40} className={ImageColor.fillColor} /></div>,
         color: ImageColor.bgColor,
       };
     }
-
+  
     if (file.type.includes(FileTypes.Pdf)) {
       return {
-        icon: <File size={40} className={PdfColor.fillColor} />,
+        icon: <div aria-label="PDF file"><File size={40} className={PdfColor.fillColor} /></div>,
         color: PdfColor.bgColor,
       };
     }
-
+  
     if (file.type.includes(FileTypes.Audio)) {
       return {
-        icon: <Headphones size={40} className={AudioColor.fillColor} />,
+        icon: <div aria-label="Audio file"><Headphones size={40} className={AudioColor.fillColor} /></div>,
         color: AudioColor.bgColor,
       };
     }
-
+  
     if (file.type.includes(FileTypes.Video)) {
       return {
-        icon: <Play size={40} className={VideoColor.fillColor} />,
+        icon: <div aria-label="Video file"><Play size={40} className={VideoColor.fillColor} /></div>,
         color: VideoColor.bgColor,
       };
     }
-
+  
     return {
-      icon: <FolderCheck size={40} className={OtherColor.fillColor} />,
+      icon: <div aria-label="Other file"><FolderCheck size={40} className={OtherColor.fillColor} /></div>,
       color: OtherColor.bgColor,
     };
   };
@@ -141,40 +141,37 @@ export default function ImageUpload() {
     }
   };
 
-  const uploadFileToS3 = async (file: File) => {
-
+  const uploadFileToS3 = useCallback(async (file: File) => {
     const params = {
       Bucket: process.env.NEXT_PUBLIC_AWS_BUCKET ?? '',
       Key: file.name,
       Body: file,
     };
-
+  
     const managedUpload = new AWS.S3.ManagedUpload({
       params,
       partSize: 10 * 1024 * 1024, // 10 MB
       queueSize: 1,
     });
-
-    // Armazenar a referência para a operação de upload
+  
     setFilesToUpload(prevFiles => prevFiles.map(item => {
       if (item.File.name === file.name) {
         return { ...item, source: managedUpload };
       }
       return item;
     }));
-
-
+  
     managedUpload.on('httpUploadProgress', (progressEvent) => {
       onUploadProgress(progressEvent, file, managedUpload);
     });
-
+  
     try {
       const result = await managedUpload.promise();
       return result;
     } catch (error) {
       throw error;
     }
-  };
+  }, []);
 
   const cancelUpload = (file: File) => {
     setFilesToUpload(files => {
@@ -200,14 +197,15 @@ export default function ImageUpload() {
         source: null,
       }))
     ]);
-
+  
     try {
       const uploadPromises = acceptedFiles.map(file => uploadFileToS3(file));
       await Promise.all(uploadPromises);
       alert('Todos os arquivos foram enviados com sucesso');
     } catch (error) {
+      console.error(error);
     }
-  }, []);
+  }, [uploadFileToS3]);
 
   const { getRootProps, getInputProps } = useDropzone({ onDrop });
 

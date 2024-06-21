@@ -121,15 +121,13 @@ export function FileUploaderChat(props: FileUploaderChatProps) {
         }
       })
     }
-  }, [])
+  }, [files]) // Inclui 'files' como dependência
 
   const isDisabled = disabled || (files?.length ?? 0) >= maxFiles
 
   return (
     <div className="relative flex flex-col gap-6 overflow-hidden">
-      {isDisabled ? (
-        null
-      ) :
+      {isDisabled ? null :
         <Dropzone
           onDrop={onDrop}
           accept={accept}
@@ -189,8 +187,7 @@ export function FileUploaderChat(props: FileUploaderChatProps) {
               )}
             </div>
           )}
-        </Dropzone>
-      }
+        </Dropzone>}
       {files?.length ? (
         <ScrollArea className="h-fit w-full px-3">
           <div className="max-h-48 space-y-4">
@@ -216,7 +213,6 @@ interface FileCardProps {
 }
 
 function FileCard({ file, progress, onRemove }: FileCardProps) {
-
   return (
     <div className="relative flex items-center space-x-4">
       <div className="flex flex-1 space-x-4">

@@ -60,62 +60,62 @@ export function InputPlayground(props: InputPlaygroundProps) {
   const [files, setFiles] = useControllableState({
     prop: valueProp,
     onChange: onValueChange,
-  })
-
+  });
+  
   const onDrop = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const acceptedFiles = Array.from(event.target.files || [])
-    if (!acceptedFiles.length) return
-
+    const acceptedFiles = Array.from(event.target.files || []);
+    if (!acceptedFiles.length) return;
+  
     if (!multiple && maxFiles === 1 && acceptedFiles.length > 1) {
-      toast.error("Não é possível fazer upload de mais de um arquivo")
-      return
+      toast.error("Não é possível fazer upload de mais de um arquivo");
+      return;
     }
-
+  
     if ((files?.length ?? 0) + acceptedFiles.length > maxFiles) {
-      toast.error(`Não é possível fazer upload de mais de ${maxFiles} arquivos`)
-      return
+      toast.error(`Não é possível fazer upload de mais de ${maxFiles} arquivos`);
+      return;
     }
-
+  
     const newFiles = acceptedFiles.map((file) =>
       Object.assign(file, {
         preview: URL.createObjectURL(file),
       })
-    )
-
-    const updatedFiles = files ? [...files, ...newFiles] : newFiles
-    setFiles(updatedFiles)
-
+    );
+  
+    const updatedFiles = files ? [...files, ...newFiles] : newFiles;
+    setFiles(updatedFiles);
+  
     if (onUpload && updatedFiles.length > 0 && updatedFiles.length <= maxFiles) {
-      const target = updatedFiles.length > 1 ? `${updatedFiles.length} arquivos` : "arquivo"
+      const target = updatedFiles.length > 1 ? `${updatedFiles.length} arquivos` : "arquivo";
       toast.promise(onUpload(updatedFiles), {
         loading: `Adicionando ${target}...`,
         success: () => {
-          setFiles([])
-          return `${target} Adicionado`
+          setFiles([]);
+          return `${target} Adicionado`;
         },
         error: `Falha ao adicionar ${target}`,
-      })
+      });
     }
-  }
-
+  };
+  
   function onRemove(index: number) {
-    if (!files) return
-    const newFiles = files.filter((_, i) => i !== index)
-    setFiles(newFiles)
-    onValueChange?.(newFiles)
+    if (!files) return;
+    const newFiles = files.filter((_, i) => i !== index);
+    setFiles(newFiles);
+    onValueChange?.(newFiles);
   }
-
-  React.useEffect(() => {
+  
+  useEffect(() => {
     return () => {
-      if (!files) return
+      if (!files) return;
       files.forEach((file) => {
         if (isFileWithPreview(file)) {
-          URL.revokeObjectURL(file.preview)
+          URL.revokeObjectURL(file.preview);
         }
-      })
-    }
-  }, [])
-
+      });
+    };
+  }, [files]);
+  
   useEffect(() => {
     if (isSending || remainingInteractions < 1) {
       return;
@@ -127,16 +127,16 @@ export function InputPlayground(props: InputPlaygroundProps) {
           handleSendMessage(currentMessage, files ?? []);
         }
       };
-
+  
       document.addEventListener("keydown", keyDownHandler);
       return () => {
         document.removeEventListener("keydown", keyDownHandler);
       };
     }
-  }, [currentMessage, isSending, remainingInteractions]);
-
-  const isDisabled = disabled || (files?.length ?? 0) >= maxFiles || isSending || remainingInteractions < 0
-
+  }, [currentMessage, isSending, remainingInteractions, files, handleSendMessage, setFiles]);
+  
+  const isDisabled = disabled || (files?.length ?? 0) >= maxFiles || isSending || remainingInteractions < 0;
+  
   return (
     <form
       className="relative overflow-hidden rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"

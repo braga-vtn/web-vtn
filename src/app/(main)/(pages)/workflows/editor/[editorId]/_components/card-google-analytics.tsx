@@ -25,15 +25,16 @@ const CardGoogleAnalytics: React.FC<CardGoogleAnalyticsProps> = ({ data, demo, o
       setGoogleAnalyticsData(data);
     });
   }, []);
- 
+
   const { dispatch, state } = useEditor();
   const nodeId = useNodeId();
+
   const isConnected = useMemo(() => {
     return state.editor.edges.some(edge => edge.source === nodeId || edge.target === nodeId);
   }, [state.editor.edges, nodeId]);
 
-  const handleCopy = useCallback(() => { }, [nodeId]);
-  const handleClone = useCallback(() => { }, [nodeId]);
+  const handleCopy = useCallback(() => { }, []);
+  const handleClone = useCallback(() => { }, []);
   const handleDelete = useCallback(() => {
     onDeleteNode(nodeId!);
   }, [nodeId, onDeleteNode]);
@@ -77,7 +78,7 @@ const CardGoogleAnalytics: React.FC<CardGoogleAnalyticsProps> = ({ data, demo, o
           </Avatar>
           <div>
             <CardTitle className="text-md">
-            Google Analytics
+              Google Analytics
             </CardTitle>
             <CardDescription>
               {data.description}
@@ -93,7 +94,7 @@ const CardGoogleAnalytics: React.FC<CardGoogleAnalyticsProps> = ({ data, demo, o
               <AlertCircle className="h-4 w-4" />
               <AlertTitle>Não está Conectado!</AlertTitle>
               <AlertDescription className='text-muted-foreground text-xs'>
-                Sua conta do Google Analytics Adsense não está integrada à Vistune.
+                Sua conta do Google Analytics não está integrada à Vistune.
               </AlertDescription>
             </Alert>
           }

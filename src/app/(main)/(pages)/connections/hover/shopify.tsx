@@ -31,7 +31,7 @@ export function HoverDomainCheckout() {
               O Checkout é a página de conclusão da compra.
             </p>
             <div className="flex items-center pt-2">
-              <PanelTop className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <PanelTop className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
                 Geralmente, é usado o padrão.
               </span>
@@ -63,7 +63,7 @@ export function HoverDomain() {
               O domínio da sua loja – nosso modelo irá ler seu site.
             </p>
             <div className="flex items-center pt-2">
-              <Check className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Check className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
                 O treinamento do site é automático!
               </span>
@@ -95,9 +95,9 @@ export function HoverDomainShopify() {
               Ele pode ser encontrado em configurações lá na Shopify
             </p>
             <div className="flex items-center pt-2">
-              <Link className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Link className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
-                Geramente com ".myshopify.com"
+                Geramente com &quot;.myshopify.com&quot;
               </span>
             </div>
           </div>
@@ -127,9 +127,9 @@ export function HoverTokenShopify() {
               O token do App criado - se tiver dúvidas visite nossa <a className="text-[#6600FF] font-bold text-sm after:content-['_↗'] ..." href="https://docs.vistune.ai" target="_blank">docs</a>
             </p>
             <div className="flex items-center pt-2">
-              <KeyRound className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <KeyRound className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
-                Sempre inicia com "shpat_"
+                Sempre inicia com &quot;shpat_&quot;
               </span>
             </div>
           </div>
@@ -159,7 +159,7 @@ export function HoverApiKeyShopify() {
               A Chave API do App criado - se tiver dúvidas visite nossa <a className="text-[#6600FF] font-bold text-sm after:content-['_↗'] ..." href="https://docs.vistune.ai" target="_blank">docs</a>
             </p>
             <div className="flex items-center pt-2">
-              <KeyRound className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <KeyRound className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
                 Exclusivo do App criado
               </span>
@@ -191,7 +191,7 @@ export function HoverSecretKeyShopify() {
               Chave Secreta do App criado - se tiver dúvidas visite nossa <a className="text-[#6600FF] font-bold text-sm after:content-['_↗'] ..." href="https://docs.vistune.ai" target="_blank">docs</a>
             </p>
             <div className="flex items-center pt-2">
-              <KeyRound className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <KeyRound className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
                 Exclusivo do App criado
               </span>

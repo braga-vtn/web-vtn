@@ -3,7 +3,6 @@
 import { Button } from "@/components/ui/button"
 import {
     Dialog,
-    DialogClose,
     DialogContent,
     DialogDescription,
     DialogFooter,
@@ -13,7 +12,7 @@ import {
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
 import { Plus, X } from "lucide-react"
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { Label } from "@/components/ui/label"
 import { ReactHookFormDemo } from "@/components/global/upload-file-training"
 import { Separator } from "@/components/ui/separator"
@@ -33,7 +32,7 @@ import { FileUploader } from "@/components/global/file-uploader"
 import { UploadedFilesCard } from "@/components/global/uploaded-files-card"
 import { toast } from "sonner"
 import { getErrorMessage } from "@/lib/handle-error"
-import { v4 } from "uuid"
+import { v4 as uuidv4 } from "uuid"
 import { FileUploaderTraining } from "@/components/global/file-uploader-training"
 
 interface TrainingData {
@@ -67,7 +66,7 @@ const profileFormSchema = z.object({
             message: "O treinamento por texto deve ter pelo menos 100 caracteres.",
         })
         .max(1000, {
-            message: "O treinamento por texto deve ter no 100 caracteres.",
+            message: "O treinamento por texto deve ter no máximo 1000 caracteres.",
         }).optional(),
     model: z
         .string({
@@ -83,7 +82,7 @@ const profileFormSchema = z.object({
         }).optional(),
     file: z
         .string({
-            required_error: "Please select an email to display.",
+            required_error: "Please select a file to upload.",
         }).optional(),
     urls: z
         .array(
@@ -98,7 +97,6 @@ const profileFormSchema = z.object({
         }),
     ).optional(),
     images: z.array(z.instanceof(File)),
-
 })
 
 type ProfileFormValues = z.infer<typeof profileFormSchema>
@@ -115,15 +113,15 @@ export function AddNewTraining({ addTraining }: AddNewTrainingProps) {
         "fileUploader",
         { defaultUploadedFiles: [] }
     )
-    const [itemName, setItemName] = React.useState("");
+    const [itemName, setItemName] = useState("");
     const { setValue } = form;
-    const [textTraining, setTextTraining] = React.useState('');
-    const [urlTraining, setUrlTraining] = React.useState('');
-    const [fileTraining, setFileTraining] = React.useState<File[]>([]);
-    const [loading, setLoading] = React.useState(false)
-    const [selectedModel, setSelectedModel] = React.useState('');
-    const [tags, setTags] = React.useState<Tag[]>([]);
-    const [isDialogOpen, setDialogOpen] = React.useState(false);
+    const [textTraining, setTextTraining] = useState('');
+    const [urlTraining, setUrlTraining] = useState('');
+    const [fileTraining, setFileTraining] = useState<File[]>([]);
+    const [loading, setLoading] = useState(false)
+    const [selectedModel, setSelectedModel] = useState('');
+    const [tags, setTags] = useState<Tag[]>([]);
+    const [isDialogOpen, setDialogOpen] = useState(false);
 
     const { fields, append, remove } = useFieldArray({
         name: "urls",
@@ -153,14 +151,14 @@ export function AddNewTraining({ addTraining }: AddNewTrainingProps) {
             })
         }
 
-        const newId = `id_${v4()}`;
+        const newId = `id_${uuidv4()}`;
         const typeTraining = (
-            data.longText ?
+            data.longText ? 
                 ((data.urls && data.urls.length > 0) || data.images) ? 'group' :
-                    'text' :
-                (data.urls && data.urls.length > 0) ?
-                    (data.images) ? 'group' :
-                        'url' : 'file'
+                'text' :
+                (data.urls && data.urls.length > 0) ? 
+                (data.images) ? 'group' :
+                'url' : 'file'
         );
 
         const newTraining = {
@@ -185,7 +183,7 @@ export function AddNewTraining({ addTraining }: AddNewTrainingProps) {
             form.reset();
             clearUploadedFiles();
         }
-    }, [isDialogOpen]);
+    }, [isDialogOpen, clearUploadedFiles, form]);
 
     return (
         <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>

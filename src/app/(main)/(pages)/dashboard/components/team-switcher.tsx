@@ -186,13 +186,13 @@ export default function TeamSwitcher({ className }: TeamSwitcherProps) {
                 </SelectTrigger>
                 <SelectContent>
                   <SelectItem value="free">
-                    <span className="font-medium">Free</span> -{" "}
+                    <span className="font-medium">Free</span> -
                     <span className="text-muted-foreground">
                       Trial for two weeks
                     </span>
                   </SelectItem>
                   <SelectItem value="pro">
-                    <span className="font-medium">Pro</span> -{" "}
+                    <span className="font-medium">Pro</span> -
                     <span className="text-muted-foreground">
                       $9/month per user
                     </span>

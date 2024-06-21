@@ -6,7 +6,7 @@ import { EditorCanvasTypes, EditorNodeType } from '@/lib/types'
 import { useNodeConnections } from '@/providers/connections-provider'
 import { useEditor } from '@/providers/editor-provider'
 import { useFuzzieStore } from '@/store'
-import { fetchBotSlackChannels, onConnections, onDragStart } from '@/lib/editor-utils'
+import { onConnections, onDragStart } from '@/lib/editor-utils'
 import { Card, CardHeader, CardTitle } from '@/components/ui/card'
 import { EditorCanvasDefaultCardTypes } from '@/lib/constant'
 import SvgReload2 from './svgReload-2'
@@ -61,16 +61,7 @@ const EditorCanvasSidebar = ({ nodes, nameTrigger, nodeControl }: Props) => {
     if (state) {
       onConnections(nodeConnection, state, googleFile)
     }
-  }, [state])
-
-  useEffect(() => {
-    if (nodeConnection.slackNode.slackAccessToken) {
-      fetchBotSlackChannels(
-        nodeConnection.slackNode.slackAccessToken,
-        setSlackChannels
-      )
-    }
-  }, [nodeConnection])
+  }, [state, nodeConnection, googleFile]) // Adicionando nodeConnection e googleFile como dependências
 
   useEffect(() => {
     let timer: ReturnType<typeof setTimeout> | undefined

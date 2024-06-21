@@ -141,7 +141,7 @@ const dummyContent = [
           começar a <Highlight>criar seus próprios modelos de inteligência artificial</Highlight> 🔥<br /><br />
 
           Por enquanto, o acesso é <strong>limitado</strong>. Para acessar, é essencial que
-          você se cadastre no <strong>"Vistune Tools"</strong>. Você encontrará mais detalhes
+          você se cadastre no <strong>&quot;Vistune Tools&quot;</strong>. Você encontrará mais detalhes
           e orientações em nossa <strong>documentação</strong>.<br /><br />
 
           Saiba que nossa equipe <strong>está pronta</strong> para apoiar você e sua empresa

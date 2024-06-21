@@ -54,7 +54,7 @@ const ConnectionCard = ({
           )}
           <CardDescription className='mt-3'>{description}</CardDescription>
         </div>
-        <img
+        <Image
           src={icon}
           alt={title}
           height={120}

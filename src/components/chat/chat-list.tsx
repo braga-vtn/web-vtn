@@ -8,6 +8,7 @@ import { ptBR } from "date-fns/locale";
 import { differenceInDays, differenceInMinutes, formatRelative } from "date-fns";
 import DialogEditChat from "../global/dialog-edit-chat";
 import DialogDeleteChat from "../global/dialog-delete-chat";
+import Image from "next/image";
 
 interface ChatListProps {
   messages?: Message[];
@@ -21,11 +22,11 @@ const renderMessageContent = (message: Message) => {
     case 'text':
       return <div>{message.message}</div>;
     case 'image':
-      return <img src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
+      return <Image src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
     case 'image/jpeg':
-      return <img src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
+      return <Image src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
     case 'image/png':
-      return <img src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
+      return <Image src={message.message} alt="image" style={{ maxWidth: '100%' }} />;
     case 'video':
       return <video controls src={message.message} style={{ maxWidth: '100%' }} />;
     case 'video/mp4':

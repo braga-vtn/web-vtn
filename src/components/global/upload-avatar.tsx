@@ -35,7 +35,7 @@ interface UploadAvatarProps {
 export function UploadAvatar({ setUploadedFiles }: UploadAvatarProps) {
   const [loading, setLoading] = React.useState(false);
   const { uploadFiles, progresses, uploadedFiles, isUploading, clearUploadedFiles } = useUploadFile(
-    "imageUploader",
+    "fileUploader", // Corrigido aqui
     { defaultUploadedFiles: [] }
   );
 
@@ -74,6 +74,10 @@ export function UploadAvatar({ setUploadedFiles }: UploadAvatarProps) {
     form.reset();
   };
 
+  const handleFileUpload = async (files: File[]): Promise<void> => {
+    await uploadFiles(files);
+  };
+
   return (
     <Form {...form}>
       <form
@@ -101,7 +105,7 @@ export function UploadAvatar({ setUploadedFiles }: UploadAvatarProps) {
                       maxFiles={1}
                       maxSize={1 * 1024 * 1024}
                       progresses={progresses}
-                      onUpload={uploadFiles}
+                      onUpload={handleFileUpload} // Corrigido aqui
                       disabled={isUploading}
                     />
                   </FormControl>

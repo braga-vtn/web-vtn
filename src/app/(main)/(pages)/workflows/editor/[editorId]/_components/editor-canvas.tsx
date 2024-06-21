@@ -201,7 +201,7 @@ const EditorCanvasInner = (props: Props) => {
       onNodeClick(newNode);
       setNodes((nds) => nds.concat(newNode));
     },
-    [reactFlowInstance, state, onNodeClick]
+    [reactFlowInstance, onNodeClick] // Remover a dependência "state"
   );
 
   const handleClickCanvas = () => {
@@ -244,10 +244,10 @@ const EditorCanvasInner = (props: Props) => {
 
   const nodeTypes = useMemo(
     () => createNodeTypes(nameFlow, demo, handleDeleteNode),
-    [handleDeleteNode, nameFlow]
+    [handleDeleteNode, nameFlow, demo] // Adicionar "demo" ao array de dependências
   );
 
-  const onGetWorkFlow = async () => {
+  const onGetWorkFlow = useCallback(async () => {
     setIsWorkFlowLoading(true);
     const response = await onGetNodesEdges(pathname.split('/').pop()!);
     if (response) {
@@ -310,11 +310,11 @@ const EditorCanvasInner = (props: Props) => {
     } else {
       setIsPageError(true)
     }
-  };
+  }, [pathname, props.demo]);
 
   useEffect(() => {
     onGetWorkFlow();
-  }, []);
+  }, [onGetWorkFlow]); // Adicionar "onGetWorkFlow" ao array de dependências
 
   const onClickHandle = () => {
     setVisibleControl(false);

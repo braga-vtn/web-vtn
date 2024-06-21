@@ -77,7 +77,7 @@ export function DialogSendFile({ onFilesUpload }: DialogSendFileProps) {
       form.reset();
       clearUploadedFiles();
     }
-  }, [isDialogOpen]);
+  }, [isDialogOpen, form, clearUploadedFiles]); // Adicionadas as dependências faltantes
 
   return (
     <Dialog open={isDialogOpen} onOpenChange={setDialogOpen}>

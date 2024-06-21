@@ -18,11 +18,11 @@ interface CardBlingProps extends NodeProps {
 }
 
 const CardBling: React.FC<CardBlingProps> = ({ data, demo, onDeleteNode }) => {
-  const [blingData, setblingData] = useState<{ shopBling: string; connectedBling: boolean } | null>(null);
+  const [blingData, setBlingData] = useState<{ shopBling: string; connectedBling: boolean } | null>(null);
 
   useEffect(() => {
     fetchBlingData().then((data) => {
-      setblingData(data);
+      setBlingData(data);
     });
   }, []);
 
@@ -32,8 +32,8 @@ const CardBling: React.FC<CardBlingProps> = ({ data, demo, onDeleteNode }) => {
     return state.editor.edges.some(edge => edge.source === nodeId || edge.target === nodeId);
   }, [state.editor.edges, nodeId]);
 
-  const handleCopy = useCallback(() => { }, [nodeId]);
-  const handleClone = useCallback(() => { }, [nodeId]);
+  const handleCopy = useCallback(() => {}, []);
+  const handleClone = useCallback(() => {}, []);
   const handleDelete = useCallback(() => {
     onDeleteNode(nodeId!);
   }, [nodeId, onDeleteNode]);

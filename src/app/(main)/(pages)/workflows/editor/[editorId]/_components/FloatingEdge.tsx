@@ -13,17 +13,19 @@ const FloatingEdge: React.FC<EdgeProps> = ({ id, source, target, markerEnd, styl
   const sourceNode = useStore(useCallback((store) => store.nodeInternals.get(source) as NodeWithAbsolutePosition, [source]));
   const targetNode = useStore(useCallback((store) => store.nodeInternals.get(target) as NodeWithAbsolutePosition, [target]));
 
-  if (!sourceNode || !targetNode) {
-    return null;
-  }
-
   // Memoiza a chamada para getEdgeParams
-  const { sx, sy, tx, ty, sourcePos, targetPos } = useMemo(() => {
+  const edgeParams = useMemo(() => {
+    if (!sourceNode || !targetNode) {
+      return null;
+    }
     return getEdgeParams(sourceNode, targetNode);
   }, [sourceNode, targetNode]);
 
-  // Memoiza a criação do caminho de Bezier
   const edgePath = useMemo(() => {
+    if (!edgeParams) {
+      return '';
+    }
+    const { sx, sy, tx, ty, sourcePos, targetPos } = edgeParams;
     const [path] = getBezierPath({
       sourceX: sx,
       sourceY: sy,
@@ -33,7 +35,11 @@ const FloatingEdge: React.FC<EdgeProps> = ({ id, source, target, markerEnd, styl
       targetY: ty,
     });
     return path;
-  }, [sx, sy, sourcePos, targetPos, tx, ty]);
+  }, [edgeParams]);
+
+  if (!edgeParams) {
+    return null;
+  }
 
   return (
     <path

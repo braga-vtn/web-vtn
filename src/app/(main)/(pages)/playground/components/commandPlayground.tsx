@@ -62,7 +62,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                     <SvgVistune />
                     <div className="grid gap-0.5">
                       <p>
-                        Vistune{" "}
+                        Vistune
                         <span className="font-medium text-foreground">
                           Cleo
                         </span>
@@ -78,7 +78,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                     <SvgVistune />
                     <div className="grid gap-0.5">
                       <p>
-                        Vistune{" "}
+                        Vistune 
                         <span className="font-medium text-foreground">
                           Vision
                         </span>
@@ -94,7 +94,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                     <SvgVistune />
                     <div className="grid gap-0.5">
                       <p>
-                        Vistune{" "}
+                        Vistune 
                         <span className="font-medium text-foreground">
                           Personalizado
                         </span>
@@ -112,7 +112,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgOpenAI />
                       <div className="grid gap-0.5">
                         <p>
-                          OpenAI{" "}
+                          OpenAI 
                           <span className="font-medium text-foreground">
                             gpt-4o
                           </span>
@@ -129,7 +129,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgOpenAI />
                       <div className="grid gap-0.5">
                         <p>
-                          OpenAI{" "}
+                          OpenAI 
                           <span className="font-medium text-foreground">
                             gpt-3.5-turbo-0125
                           </span>
@@ -147,7 +147,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgGemini />
                       <div className="grid gap-0.5">
                         <p>
-                          Google{" "}
+                          Google 
                           <span className="font-medium text-foreground">
                             gemini-1.5-pro
                           </span>
@@ -165,7 +165,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgAnthropic />
                       <div className="grid gap-0.5">
                         <p>
-                          Anthropic{" "}
+                          Anthropic 
                           <span className="font-medium text-foreground">
                             claude-3-opus
                           </span>
@@ -183,7 +183,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgGoogle />
                       <div className="grid gap-0.5">
                         <p>
-                          Google{" "}
+                          Google 
                           <span className="font-medium text-foreground">
                             palm-2
                           </span>
@@ -201,7 +201,7 @@ const CommandPlayground: React.FC<CommandPlaygroundProps> = (props) => {
                       <SvgMeta />
                       <div className="grid gap-0.5">
                         <p>
-                          Meta{" "}
+                          Meta 
                           <span className="font-medium text-foreground">
                             llama-3
                           </span>

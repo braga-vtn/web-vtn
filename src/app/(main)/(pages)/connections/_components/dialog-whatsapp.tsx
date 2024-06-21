@@ -14,6 +14,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { qrcode } from "../whatsapp/data"
 import { PhoneCode } from "../whatsapp/_components/phoneInput";
 import { ChevronLeftIcon } from "lucide-react";
+import Image from "next/image";
 
 const DialogWhatsapp: FC = () => {
   const [isLoaded, setIsLoaded] = useState(false);
@@ -40,7 +41,7 @@ const DialogWhatsapp: FC = () => {
             <div className="flex flex-col items-center mt-10">
               <span className="text-lg font-bold">Integração com <a className="mt-2 text-[#6600FF] font-bold text-xl after:content-['_↗']" href="https://docs.vistune.ai" target="_blank">WhatsApp</a></span>
               {isLoaded && showQrcode ? (
-                <img className="mt-10" width={300} src={qrcodeImage} alt="QR Code" />
+                <Image className="mt-10" width={300} src={qrcodeImage} alt="QR Code" />
               ) : null}
               {!isLoaded ? (
                 <Skeleton className="w-[300px] h-[300px] rounded-md mt-10 animate-pulse" />

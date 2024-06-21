@@ -31,7 +31,7 @@ export function HoverTrainingId() {
               ID é o código de identificação do treinamento.
             </p>
             <div className="flex items-center pt-2">
-              <Pyramid className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Pyramid className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 O suporte pode pedir o ID
               </span>
@@ -63,7 +63,7 @@ export function HoverTrainingName() {
               O nome desse treinamento
             </p>
             <div className="flex items-center pt-2">
-              <PenLine className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <PenLine className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 Definido no momento do treinamento
               </span>
@@ -95,7 +95,7 @@ export function HoverTrainingParameters() {
               Conjunto relevante de vetores do treinamento
             </p>
             <div className="flex items-center pt-2">
-              <TestTube2 className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <TestTube2 className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 Existem milhões de vetores em cada parâmetro
               </span>
@@ -127,7 +127,7 @@ export function HoverTrainingUtilization() {
               Total de vezes que o modelo utilizou esse treinamento
             </p>
             <div className="flex items-center pt-2">
-              <Cylinder className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Cylinder className="mr-2 h-4 w-4 opacity-70" />
               <span className="text-xs text-muted-foreground">
                 Atualizado a cada pergunta
               </span>
@@ -159,7 +159,7 @@ export function HoverTrainingSimilarity() {
               Define a qualidade do treinamento baseado nas perguntas
             </p>
             <div className="flex items-center pt-2">
-              <Copy className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Copy className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 Varia de 0 a 1, acima de 0.7 é bom
               </span>
@@ -191,7 +191,7 @@ export function HoverTrainingType() {
               Define qual o tipo do treinamento realizado
             </p>
             <div className="flex items-center pt-2">
-              <Box className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Box className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 Temos: texto, arquivo, vídeo, url e áudio
               </span>
@@ -223,7 +223,7 @@ export function HoverTrainingModel() {
               Informa qual modelo utiliza o treinamento selecionado
             </p>
             <div className="flex items-center pt-2">
-              <Brain className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Brain className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 Selecionado no momento do treinamento
               </span>
@@ -255,7 +255,7 @@ export function HoverTrainingDate() {
               Momento em que foi realizado o treinamento
             </p>
             <div className="flex items-center pt-2">
-              <Calendar className="mr-2 h-4 w-4 opacity-70" />{" "}
+              <Calendar className="mr-2 h-4 w-4 opacity-70" /> 
               <span className="text-xs text-muted-foreground">
                 A data não pode ser alterada
               </span>

@@ -1,18 +1,18 @@
-"use client"
+"use client";
 
-import * as React from "react"
-import { CalendarIcon } from "@radix-ui/react-icons"
-import { addDays, addHours, endOfDay, format, isAfter, nextSaturday, subDays, subMonths } from "date-fns"
-import { DateRange } from "react-day-picker"
-import { ptBR } from 'date-fns/locale'
-import { cn } from "@/lib/utils"
+import * as React from "react";
+import { CalendarIcon } from "@radix-ui/react-icons";
+import { addDays, addHours, endOfDay, format, isAfter, nextSaturday, subDays, subMonths } from "date-fns";
+import { DateRange } from "react-day-picker";
+import { ptBR } from 'date-fns/locale';
+import { cn } from "@/lib/utils";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Button } from "@/components/ui/button"
-import { Calendar } from "@/components/ui/calendar"
+} from "@/components/ui/popover";
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 
 interface CalendarDashboardProps extends React.HTMLAttributes<HTMLDivElement> {
   onDateChange: (range: DateRange) => void;
@@ -22,13 +22,13 @@ export function CalendarDashboard({
   className,
   onDateChange,
 }: CalendarDashboardProps) {
-  const today = new Date();
+  const today = React.useMemo(() => new Date(), []);
   const [date, setDate] = React.useState<DateRange>({ from: subDays(today, 6), to: today });
   const [visibleMonth, setVisibleMonth] = React.useState(date?.from || today);
 
   React.useEffect(() => {
     setVisibleMonth(date?.from || today);
-  }, [date]);
+  }, [date, today]);
 
   const handleSelectRange = (range: DateRange | undefined) => {
     if (range) {
@@ -52,7 +52,7 @@ export function CalendarDashboard({
           {date?.from ? (
             date.to ? (
               <>
-                {format(date.from, "LLL dd, y", { locale: ptBR })} -{" "}
+                {format(date.from, "LLL dd, y", { locale: ptBR })} -
                 {format(date.to, "LLL dd, y", { locale: ptBR })}
               </>
             ) : (
@@ -145,7 +145,7 @@ export function CalendarDashboard({
         <div className="p-2">
           <div className={cn("grid gap-2", className)}>
             <Calendar
-              key={visibleMonth ? visibleMonth.toLocaleDateString() : "key"} 
+              key={visibleMonth ? visibleMonth.toLocaleDateString() : "key"}
               initialFocus
               mode="range"
               defaultMonth={visibleMonth}

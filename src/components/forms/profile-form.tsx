@@ -1,6 +1,6 @@
 'use client'
 
-import React, { use, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
@@ -43,7 +43,7 @@ const ProfileForm = ({ user, onUpdate }: Props) => {
 
   useEffect(() => {
     form.reset({ name: user.name, email: user.email })
-  }, [user])
+  }, [user, form]) // Inclui form como dependência
 
   return (
     <Form {...form}>

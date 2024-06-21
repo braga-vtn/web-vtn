@@ -122,7 +122,7 @@ export function TokenRevealed() {
                 esclarecer que esta medida não visa limitar o seu desenvolvimento;
                 ao contrário, o objetivo é assegurar uma distribuição equilibrada
                 de recursos para todos os usuários. <br></br><br></br>
-                Cada conta é classificada em um "Tier", que varia de 1 a 5. O
+                Cada conta é classificada em um &quot;Tier&quot;, que varia de 1 a 5. O
                 Tier representa o limite máximo de requisições que uma conta pode
                 realizar por hora. Para mais detalhes, visite a página da
                 <a className="text-[#6600FF] font-bold after:content-['_↗'] ..."

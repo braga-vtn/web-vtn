@@ -6,7 +6,6 @@ import { Pen, Plus } from 'lucide-react';
 import React from 'react'
 import { toast } from 'sonner';
 import { FancyMultiSelect } from './select-function';
-import ImageUpload from '@/components/ui/input-file';
 import { UploadAvatar } from '@/components/global/upload-avatar';
 import { UploadedFile } from '@/lib/types';
 import Image from 'next/image';

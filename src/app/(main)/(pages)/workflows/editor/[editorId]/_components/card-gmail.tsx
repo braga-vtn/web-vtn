@@ -28,12 +28,13 @@ const CardGmail: React.FC<CardGmailProps> = ({ data, demo, onDeleteNode }) => {
 
   const { dispatch, state } = useEditor();
   const nodeId = useNodeId();
+
   const isConnected = useMemo(() => {
     return state.editor.edges.some(edge => edge.source === nodeId || edge.target === nodeId);
   }, [state.editor.edges, nodeId]);
 
-  const handleCopy = useCallback(() => { }, [nodeId]);
-  const handleClone = useCallback(() => { }, [nodeId]);
+  const handleCopy = useCallback(() => { }, []);
+  const handleClone = useCallback(() => { }, []);
   const handleDelete = useCallback(() => {
     onDeleteNode(nodeId!);
   }, [nodeId, onDeleteNode]);

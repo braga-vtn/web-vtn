@@ -32,8 +32,8 @@ const CardMetaAdsense: React.FC<CardMetaAdsenseProps> = ({ data, demo, onDeleteN
     return state.editor.edges.some(edge => edge.source === nodeId || edge.target === nodeId);
   }, [state.editor.edges, nodeId]);
 
-  const handleCopy = useCallback(() => { }, [nodeId]);
-  const handleClone = useCallback(() => { }, [nodeId]);
+  const handleCopy = useCallback(() => { }, []);
+  const handleClone = useCallback(() => { }, []);
   const handleDelete = useCallback(() => {
     onDeleteNode(nodeId!);
   }, [nodeId, onDeleteNode]);

@@ -1,6 +1,5 @@
 import { postContentToWebHook } from '@/app/(main)/(pages)/connections/_actions/discord-connection'
 import { onCreateNewPageInDatabase } from '@/app/(main)/(pages)/connections/_actions/notion-connection'
-import { postMessageToSlack } from '@/app/(main)/(pages)/connections/_actions/slack-connection'
 import { db } from '@/lib/db'
 import axios from 'axios'
 import { headers } from 'next/headers'
@@ -49,20 +48,6 @@ export async function POST(req: NextRequest) {
                 )
                 flowPath.splice(flowPath[current], 1)
               }
-            }
-            if (flowPath[current] == 'Slack') {
-              const channels = flow.slackChannels.map((channel) => {
-                return {
-                  label: '',
-                  value: channel,
-                }
-              })
-              await postMessageToSlack(
-                flow.slackAccessToken!,
-                channels,
-                flow.slackTemplate!
-              )
-              flowPath.splice(flowPath[current], 1)
             }
             if (flowPath[current] == 'Notion') {
               await onCreateNewPageInDatabase(
