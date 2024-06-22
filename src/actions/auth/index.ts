@@ -6,7 +6,6 @@ import { currentUser, redirectToSignIn } from '@clerk/nextjs'
 export const onCompleteUserRegistration = async (
   name: string,
   clerkId: string,
-  tier: string,
   email: string
 ) => {
   try {

@@ -42,11 +42,8 @@ export const useSignUpForm = () => {
       onNext((prev) => prev + 1)
     } catch (error: any) {
       toast({
-        title:
-          error.errors[0].longMessage == "Password has been found in an online data breach. For account safety, please use a different password." ? "Senha Negada" : "Algo deu Errado",
-        description:
-          error.errors[0].longMessage == "Password has been found in an online data breach. For account safety, please use a different password." ? "A Senha preenchida parece violar o padrão de segurança que exigimos. Por gentileza, utilize uma senha diferente!" : error.errors[0].longMessage,
-
+        title: 'Error',
+        description: error.errors[0].longMessage,
       })
     }
   }
@@ -61,20 +58,16 @@ export const useSignUpForm = () => {
           code: values.otp,
         })
 
-        // if (completeSignUp.status !== 'complete') {
-        //   console.log("completeSignUpstatus", completeSignUp.status)
-
-        //   return { message: 'Something went wrong!' }
-        // }
+        if (completeSignUp.status !== 'complete') {
+          return { message: 'Something went wrong!' }
+        }
 
         if (completeSignUp.status == 'complete') {
-
           if (!signUp.createdUserId) return
 
           const registered = await onCompleteUserRegistration(
             values.fullname,
             signUp.createdUserId,
-            values.type,
             values.email
           )
 
@@ -89,14 +82,14 @@ export const useSignUpForm = () => {
 
           if (registered?.status == 400) {
             toast({
-              title: 'Algo deu Errado',
-              description: 'Não foi possível concluir sua solicitação. Tente novamente mais tarde!',
+              title: 'Error',
+              description: 'Something went wrong!',
             })
           }
         }
       } catch (error: any) {
         toast({
-          title: 'Algo deu Errado',
+          title: 'Error',
           description: error.errors[0].longMessage,
         })
       }

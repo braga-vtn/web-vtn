@@ -66,7 +66,7 @@ export async function POST(req: NextRequest) {
                     url: `${process.env.NGROK_URI}?flow_id=${flow.id}`,
                     enabled: 'true',
                     schedule: {
-                      timezone: 'Europe/Istanbul',
+                      timezone: 'America/Sao_Paulo',
                       expiresAt: 0,
                       hours: [-1],
                       mdays: [-1],
