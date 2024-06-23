@@ -47,7 +47,12 @@ const acceptedTitlesForDefault: EditorCanvasTypes[] = [
   'GoogleAnalytics',
   'GoogleAdsense',
   'YoutubeInsights',
-  'InstagramInsights'
+  'InstagramInsights',
+
+  'WhatsApp',
+  'Instagram',
+  'Telegram',
+  'Gmail',
 ]
 
 const EditorCanvasSidebar = ({ nodes, nameTrigger, nodeControl }: Props) => {

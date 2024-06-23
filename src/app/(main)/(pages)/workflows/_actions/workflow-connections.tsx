@@ -2,19 +2,19 @@
 import { db } from '@/lib/db'
 import { auth, currentUser } from '@clerk/nextjs'
 
-export const onFlowPublish = async (workflowId: string, state: boolean) => {
-  const published = await db.workflows.update({
-    where: {
-      id: workflowId,
-    },
-    data: {
-      publish: state,
-    },
-  })
+// export const onFlowPublish = async (workflowId: string, state: boolean) => {
+//   const published = await db.workflows.update({
+//     where: {
+//       id: workflowId,
+//     },
+//     data: {
+//       publish: state,
+//     },
+//   })
 
-  if (published.publish) return 'Workflow published'
-  return 'Workflow unpublished'
-}
+//   if (published.publish) return 'Workflow published'
+//   return 'Workflow unpublished'
+// }
 
 export const onGetWorkflows = async () => {
   let user = null;

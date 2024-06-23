@@ -277,7 +277,7 @@ const EditorCanvasInner = (props: Props) => {
       setNameFlow(name);
       setIsWorkFlowLoading(false);
     } else if (props.demo) {
-      const response2 = await onGetNodesEdges("78ab5s89-8120-46f1-a7f2-n8astd6s58b5");
+      const response2 = await onGetNodesEdges("a992b5fe-fa19-4d89-94ae-0f5a6a1cac7b");
       if (response2) {
         const loadedNodes = JSON.parse(response2.nodes!);
         const loadedEdges = JSON.parse(response2.edges!);
