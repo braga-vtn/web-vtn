@@ -4,7 +4,6 @@ export type UserRegistrationProps = {
   type: string
   fullname: string
   email: string
-  confirmEmail: string
   password: string
   confirmPassword: string
   otp: string
@@ -17,7 +16,6 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
       .string()
       .min(4, { message: 'Seu nome deve ter pelo menos 4 caracteres' }),
     email: z.string().email({ message: 'Formato de e-mail incorreto' }),
-    confirmEmail: z.string().email(),
     password: z
       .string()
       .min(8, { message: 'Sua senha deve ter pelo menos 8 caracteres' })
@@ -34,10 +32,6 @@ export const UserRegistrationSchema: ZodType<UserRegistrationProps> = z
   .refine((schema) => schema.password === schema.confirmPassword, {
     message: 'As senhas não coincidem',
     path: ['confirmPassword'],
-  })
-  .refine((schema) => schema.email === schema.confirmEmail, {
-    message: 'Seus e-mails não correspondem',
-    path: ['confirmEmail'],
   })
 
 export type UserLoginProps = {
